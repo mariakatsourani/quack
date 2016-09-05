@@ -1,0 +1,54 @@
+{% extends "QuackBundle::base.html.twig" %}
+
+{% block title %}Search Users{% endblock %}
+
+{% block sidebar %}
+    {% include "QuackBundle::sidebar.html.twig" with {'myFollowers' : null} %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-9">
+        <div class="row">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                </span>
+            </div><!-- /input -->
+        </div>
+
+        <hr>
+
+        <div class="row">
+            {% for user in users %}
+                <div class="col-md-12">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#"><img class="media-object img-thumbnail" src="{{ asset('img/person.png')}}" alt="person" style="width:85px"></a>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">
+                                <a href="{{ path('userById', {'username': user.username }) }}">{{ user.username }}</a>
+                            </h3>
+                            {% if  user.statuses is empty %}
+                            <div class="panel panel-default">
+                                <div class="panel-body">{{ user.username }} has no posts yet. :(</div>
+                            </div>
+                            {% endif %}
+                            {% for status in user.statuses %}
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i>{{ status.created|date("Y/m/d") }}</i>
+                                        <span class="glyphicon glyphicon-thumbs-up pull-right"> {{ status.upvotes }}</span>
+                                    </div>
+                                    <div class="panel-body"><h5> {{ status.content }} </h5></div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div><!-- col-md-12 -->
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

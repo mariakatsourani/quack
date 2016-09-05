@@ -1,0 +1,46 @@
+{% extends "QuackBundle::base.html.twig" %}
+
+{% block title %}{{ user.username }}'s cool profile{% endblock %}
+
+{% block sidebar %}
+    {% include "QuackBundle::sidebar.html.twig" with {'myFollowers' : user.myFollowers} %}
+{% endblock %}
+
+{% block content %}
+    <!-- include add status form -->
+
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <img class="col-md-2 col-md-push-0 col-xs-4 col-xs-push-4 img-responsive img-thumbnail" src="{{ asset('img/person.png')}}" alt="person">
+                </div>
+
+                <div class="row">
+                    <h4 class="col-md-10 col-md-pull-4 col-xs-12 text-center"><b>{{ user.username }}</b></h4>
+                    <button type="button" class="btn btn-primary col-md-2 col-md-push-0 col-xs-4 col-xs-push-4">Follow</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            {% include "QuackBundle::post-status.html.twig" with {'username' : user.username} %}
+        </div>
+
+        <div class="row">
+            {% for status in user.statuses %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i>{{ status.created|date("Y/m/d") }}</i>
+                        <span class="glyphicon glyphicon-thumbs-up pull-right"> {{ status.upvotes }}</span>
+                    </div>
+                    <div class="panel-body"><h5> {{ status.content }} </h5></div>
+                </div>
+            {% endfor %}
+        </div>
+
+        
+    </div>
+{% endblock %}

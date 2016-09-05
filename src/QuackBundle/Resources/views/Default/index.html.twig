@@ -1,0 +1,48 @@
+{% extends "QuackBundle::base.html.twig" %}
+
+{% block content %}
+    <div class="col-md-4 col-md-push-4 col-sm-6 col-sm-push-3">
+      <ul class="nav nav-tabs">
+        <li class="active col-md-6 col-sm-6"><a data-toggle="tab" href="#sign-in">Sign In</a></li>
+        <li class="col-md-6 col-sm-6"><a data-toggle="tab" href="#register">Register</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="sign-in" class="tab-pane fade in active">
+            <form>
+                <p><div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username">
+                </div></p>
+                <p><div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div></p>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+        </div>
+
+        <div id="register" class="tab-pane fade">
+            <form action="" method="post">
+                <p><div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Password">
+                </div></p>
+                <p><div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div></p>
+                <p><div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm-password" placeholder="Password">
+                </div></p>
+                <p><div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email">
+                </div></p>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+      </div>
+    </div>
+{% endblock %}

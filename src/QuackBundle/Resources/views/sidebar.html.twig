@@ -1,0 +1,17 @@
+<div class="col-md-3 hidden-sm hidden-xs">
+
+    <h4>
+    {% if myFollowers is null %}
+        Peps
+    {% else %}
+        <h4><a href="{{ path('users') }}">Find Peps</a></h4>
+        My Followers
+    {% endif %}
+    </h4>
+
+    <div class="list-group">
+        {% for follower in myFollowers %}
+            <a href="{{ path('userById', {'username': follower.username }) }}" class="list-group-item">{{ follower.username }}</a>
+        {% endfor %}
+    </div>
+</div>

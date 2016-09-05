@@ -1,0 +1,133 @@
+<?php
+
+namespace QuackBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Status
+ *
+ * @ORM\Table(name="status")
+ * @ORM\Entity(repositoryClass="QuackBundle\Repository\StatusRepository")
+ */
+class Status
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text")
+     */
+    private $content;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="date")
+     */
+    private $created;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="upvotes", type="bigint")
+     */
+    private $upvotes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="statuses")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return Status
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Status
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set upvotes
+     *
+     * @param integer $upvotes
+     *
+     * @return Status
+     */
+    public function setUpvotes($upvotes)
+    {
+        $this->upvotes = $upvotes;
+
+        return $this;
+    }
+
+    /**
+     * Get upvotes
+     *
+     * @return int
+     */
+    public function getUpvotes()
+    {
+        return $this->upvotes;
+    }
+}

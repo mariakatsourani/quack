@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href={{ asset('vendor/twbs/bootstrap/dist/css/bootstrap.min.css') }} />
+
+        <title>{% block title %}Quack{% endblock %}</title>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ path('home') }}" class="img-responsive">Quack!</a>
+                </div>
+
+                <div class="btn-group navbar-right" role="group">
+                    <a href="{{ path('users') }}" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-user" aria-hidden="true"><span></a>
+                    <a href="{{ path('home') }}" class="btn btn-default navbar-btn">Sign in</a>
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+
+                {% block sidebar %}
+
+                {% endblock %}
+
+                {% block content %}
+
+                {% endblock %}
+
+
+            </div>
+        </div>
+        <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+        <script src={{ asset('vendor/twbs/bootstrap/dist/js/bootstrap.min.js') }}></script>
+    </body>
+</html>
